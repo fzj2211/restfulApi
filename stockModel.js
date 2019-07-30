@@ -32,7 +32,7 @@ var stockSchema = mongoose.Schema({
     }
 });
 // Export stock model
-var stock = module.exports = mongoose.model('stock', stockSchema);
+var stock = module.exports = mongoose.model('stocks', stockSchema);
 module.exports.get = function (callback, limit) {
     stock.find(callback).limit(limit);
 }
