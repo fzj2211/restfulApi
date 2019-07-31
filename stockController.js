@@ -1,9 +1,9 @@
 // stockController.js
 // Import stock model
-stock = require('./stockModel');
+Stock = require('./stockModel');
 // Handle index actions
 exports.index = function (req, res) {
-    stock.get(function (err, stocks) {
+    Stock.get(function (err, stocks) {
         if (err) {
             res.json({
                 status: "error",
@@ -19,7 +19,7 @@ exports.index = function (req, res) {
 };
 // Handle create stock actions
 exports.new = function (req, res) {
-    var stock = new stock();
+    var stock = new Stock();
     stock.name = req.body.name ? req.body.name : stock.name;
     stock.gender = req.body.gender;
     stock.email = req.body.email;
@@ -36,7 +36,7 @@ res.json({
 };
 // Handle view stock info
 exports.view = function (req, res) {
-    stock.findById(req.params.stock_id, function (err, stock) {
+    Stock.findById(req.params.stock_id, function (err, stock) {
         if (err)
             res.send(err);
         res.json({
@@ -47,7 +47,7 @@ exports.view = function (req, res) {
 };
 // Handle update stock info
 exports.update = function (req, res) {
-stock.findById(req.params.stock_id, function (err, stock) {
+Stock.findById(req.params.stock_id, function (err, stock) {
         if (err)
             res.send(err);
 stock.name = req.body.name ? req.body.name : stock.name;
@@ -67,7 +67,7 @@ stock.name = req.body.name ? req.body.name : stock.name;
 };
 // Handle delete stock
 exports.delete = function (req, res) {
-    stock.remove({
+    Stock.remove({
         _id: req.params.stock_id
     }, function (err, stock) {
         if (err)
