@@ -30,6 +30,8 @@ var stockSchema = mongoose.Schema({
         type: String,
         required: true
     }
+},{
+    strict: false
 });
 // Export stock model
 var stock = module.exports = mongoose.model('stocks', stockSchema);
