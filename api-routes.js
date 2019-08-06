@@ -14,6 +14,10 @@ var stockController = require('./stockController');
 router.route('/stocks')
     .get(stockController.index)
     .post(stockController.new);
+
+router.route('/stocks/list')
+    .get(stockController.list);
+    
 router.route('/stocks/:stock_id')
     .get(stockController.view)
     .patch(stockController.update)

@@ -17,6 +17,23 @@ exports.index = function (req, res) {
         });
     });
 };
+
+exports.list = function (req, res) {
+    Stock.find({ticker:req.query.ticker}, function(err, stocks){
+        if (err) {
+            res.json({
+                status: "error",
+                message: err,
+            });
+        }
+        res.json({
+            status: "success",
+            message: req.query.ticker + " retrieved successfully",
+            data: stocks
+        });
+    });
+};
+
 // Handle create stock actions
 exports.new = function (req, res) {
     var stock = new Stock();
