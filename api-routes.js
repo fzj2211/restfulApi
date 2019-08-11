@@ -17,7 +17,10 @@ router.route('/stocks')
 
 router.route('/stocks/list')
     .get(stockController.list);
-    
+
+router.route('/stocks/chart')
+    .get(stockController.chart);
+
 router.route('/stocks/:stock_id')
     .get(stockController.view)
     .patch(stockController.update)
